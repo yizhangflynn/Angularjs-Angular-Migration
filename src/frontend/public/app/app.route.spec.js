@@ -1,24 +1,21 @@
-import AppModule from './app.module';
+import AppModule from './app.module.ajs';
 
-const mockModule = angular.mock.module;
+const module = angular.mock.module;
 
 context('app route unit test', () => {
 
     let $state;
     let $location;
     let $rootScope;
-    let $httpBackend;
 
-    beforeEach(mockModule(AppModule));
+    beforeEach(module(AppModule));
+    beforeEach(module('component-templates'));
 
     beforeEach('general test setup', inject($injector => {
 
         $state = $injector.get('$state');
         $location = $injector.get('$location');
         $rootScope = $injector.get('$rootScope');
-        $httpBackend = $injector.get('$httpBackend');
-
-        $httpBackend.whenGET(/.*/).respond(200);
     }));
 
     it('should turn on HTML5 mode', () => {
@@ -28,12 +25,12 @@ context('app route unit test', () => {
 
     describe('/', () => {
 
-        it('should redirect to game list state at /games url', () => {
+        it('should redirect to game state at /games url', () => {
 
-            $location.url('/');
+            $state.go('index');
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.gameList');
+            expect($state.current.name).to.equal('index.game');
             expect($state.current.url).to.equal('^/games');
         });
     });
@@ -42,10 +39,9 @@ context('app route unit test', () => {
 
         it('should redirect to error state at /error url', () => {
 
-            $location.url('/invalid-url');
-            $httpBackend.flush();
+            $state.go('error');
+            $rootScope.$apply();
 
-            expect($state.current.name).to.equal('error');
             expect($state.current.url).to.equal('/error');
         });
     });
@@ -54,10 +50,9 @@ context('app route unit test', () => {
 
         it('should navigate to bookmarks state at /bookmarks url', () => {
 
-            $location.url('/bookmarks');
+            $state.go('index.bookmarks');
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.bookmarks');
             expect($state.current.url).to.equal('^/bookmarks');
         });
     });
@@ -66,22 +61,20 @@ context('app route unit test', () => {
 
         it('should navigate to featured state at /featured url', () => {
 
-            $location.url('/featured');
+            $state.go('index.featured');
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.featured');
             expect($state.current.url).to.equal('^/featured');
         });
     });
 
     describe('/games', () => {
 
-        it('should navigate to game list state at /games url', () => {
+        it('should navigate to game state at /games url', () => {
 
-            $location.url('/games');
+            $state.go('index.game');
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.gameList');
             expect($state.current.url).to.equal('^/games');
         });
     });
@@ -90,10 +83,9 @@ context('app route unit test', () => {
 
         it('should navigate to channels state at /games/:name url', () => {
 
-            $location.url('/games/random-game-name');
+            $state.go('index.channels', { name: 'some-game-name' });
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.channels');
             expect($state.current.url).to.equal('^/games/:name');
         });
     });
@@ -102,10 +94,9 @@ context('app route unit test', () => {
 
         it('should navigate to histories state at /histories url', () => {
 
-            $location.url('/histories');
+            $state.go('index.histories');
             $rootScope.$apply();
 
-            expect($state.current.name).to.equal('index.histories');
             expect($state.current.url).to.equal('^/histories');
         });
     });

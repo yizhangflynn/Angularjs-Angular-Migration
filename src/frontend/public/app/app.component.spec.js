@@ -1,9 +1,11 @@
-import AppModule from './app.module';
+import AppModule from './app.module.ajs';
 
-import { mockComponent } from '../testing/stubs/mockComponent.stub';
-import { mockBookmarkService } from '../testing/stubs/bookmark.service.stub';
+import { stubComponentNg1 } from './testing/stubs/custom/components.stub';
+import { stubAuthenticatorServiceNg1 } from './testing/stubs/custom/authenticator.service.stub';
+import { stubBookmarkManagerServiceNg1 } from './testing/stubs/custom/bookmark-manager.service.stub';
+import { stubViewHistoryManagerServiceNg1 } from './testing/stubs/custom/view-history-manager.service.stub';
 
-const mockModule = angular.mock.module;
+const module = angular.mock.module;
 const sinonExpect = sinon.assert;
 
 context('app component unit test', () => {
@@ -15,19 +17,26 @@ context('app component unit test', () => {
     let component;
     let componentElement;
 
-    let bookmarkServiceStub;
+    let authenticatorStub;
+    let bookmarkManagerStub;
+    let viewHistoryManagerStub;
 
-    beforeEach(mockModule(AppModule));
-    beforeEach(mockModule('component-templates'));
+    beforeEach(module(AppModule));
+    beforeEach(module('component-templates'));
 
-    beforeEach('mocks setup', () => {
+    beforeEach('stubs setup', () => {
 
-        mockComponent(mockModule, 'sidebar');
-        mockComponent(mockModule, 'topNavbar');
-        mockComponent(mockModule, 'gameList');
-        bookmarkServiceStub = mockBookmarkService(mockModule, inject);
+        stubComponentNg1(module, 'sidebar');
+        stubComponentNg1(module, 'topNavbar');
+        stubComponentNg1(module, 'gameList');
 
-        bookmarkServiceStub.initializeMock();
+        authenticatorStub = stubAuthenticatorServiceNg1(module, inject);
+        bookmarkManagerStub = stubBookmarkManagerServiceNg1(module, inject);
+        viewHistoryManagerStub = stubViewHistoryManagerServiceNg1(module, inject);
+
+        authenticatorStub.setupStub();
+        bookmarkManagerStub.setupStub();
+        viewHistoryManagerStub.setupStub();
     });
 
     beforeEach('general test setup', inject(($injector, $componentController) => {
@@ -48,12 +57,66 @@ context('app component unit test', () => {
 
     describe('$onInit()', () => {
 
-        it('should use bookmark service to cache bookmarks on initialization', () => {
+        it('should cache bookmarks on initialization when user is authenticated', () => {
 
             component.$onInit();
             $rootScope.$apply();
 
-            sinonExpect.calledOnce(bookmarkServiceStub.cacheBookmarks);
+            sinonExpect.calledOnce(bookmarkManagerStub.cacheBookmarks);
+        });
+
+        it('should not cache bookmarks on initialization when user is not authenticated', () => {
+
+            authenticatorStub.isAuthenticated = false;
+
+            component.$onInit();
+            $rootScope.$apply();
+
+            sinonExpect.notCalled(bookmarkManagerStub.cacheBookmarks);
+        });
+
+        it('should cache view histories on initialization when user is authenticated', () => {
+
+            component.$onInit();
+            $rootScope.$apply();
+
+            sinonExpect.calledOnce(viewHistoryManagerStub.cacheHistories);
+        });
+
+        it('should not cache view histories on initialization when user is not authenticated', () => {
+
+            authenticatorStub.isAuthenticated = false;
+
+            component.$onInit();
+            $rootScope.$apply();
+
+            sinonExpect.notCalled(viewHistoryManagerStub.cacheHistories);
+        });
+
+        it('should register user authenticated event listener', () => {
+
+            component.$onInit();
+            $rootScope.$apply();
+            bookmarkManagerStub.cacheBookmarks.resetHistory();
+            viewHistoryManagerStub.cacheHistories.resetHistory();
+
+            $rootScope.$broadcast('userAuthenticated');
+
+            sinonExpect.calledOnce(bookmarkManagerStub.cacheBookmarks);
+            sinonExpect.calledOnce(viewHistoryManagerStub.cacheHistories);
+        });
+
+        it('should register user logged out event listener', () => {
+
+            component.$onInit();
+            $rootScope.$apply();
+            bookmarkManagerStub.bookmarks = [{ id: 1 }, { id: 4 }, { id: 7 }];
+            viewHistoryManagerStub.histories = [{ id: 1 }, { id: 4 }, { id: 7 }];
+
+            $rootScope.$broadcast('userLoggedOut');
+
+            expect(bookmarkManagerStub.bookmarks).to.be.empty;
+            expect(viewHistoryManagerStub.histories).to.be.empty;
         });
     });
 });
