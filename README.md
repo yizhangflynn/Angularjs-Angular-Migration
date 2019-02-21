@@ -1,15 +1,7 @@
-# Migrating AngularJs to Angular 2+
+### Attention: you can locate the sample application in ./src/frontend/public/app
 
-This is a sample application to demonstrate how we can migrate our AngularJs application to Angular 2+. There are multiple steps involved to help with the migration process over a period of time (i.e. 3 ~ 6 months).
+Few quick notes:
 
-The fundamental idea is to migrate one component/module at a time while having AngularJs and Angular 2+ running in parallel. The application will continue to function during the entire migration process.
-
-There are some necessary steps we need to do before we can start migrating and it is strongly recommended that we take this chance to properly refactor our code, add adequate tests and utilize some powerful tools to make our code base more manageable.
-
-You will find 5 branches in this repository corresponding to 5 different stages of the sample app:
-
-* Stage 0: application with no tests and needs refactoring
-* Stage 1: refactored and tested code
-* Stage 2: hybrid application running both AngularJs and Angular 2+
-* Stage 3: fully migrated application
-* Stage 4: adopting TypeScript
+* we break down the code into modules to make them more manageable and easier to be migrated
+* the application is organized using the structure mentioned in ServiceApp.Web document - _**however, we will use a more scalable structure for our application and please refer to "Stage 2: hybrid application running both AngularJs and Angular 2+" for more details**_
+* we use webpack for bundling and karma to run our tests. _**for proper configurations of tools such as webpack and karma, please also refer to "Stage 2: hybrid application running both AngularJs and Angular 2+" for more details**_
