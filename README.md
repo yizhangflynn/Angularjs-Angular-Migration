@@ -18,7 +18,7 @@ You will find 5 branches in this repository corresponding to 5 different stages 
 [Stage 1]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-1-refactored-and-tested-code
 [Stage 2]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-2-hybrid-application-running-both-AngularJs-and-Angular-2+
 
-### The sample application will be deployed to Azure in future. However, if you wish to run and test the sample application on your local environment, please follow the instructions below:
+### The application will be deployed to Azure in future. However, if you wish to run and test it on your local machine, please follow the instructions below:
 
 Three things needs to be installed on your local machine:
 * node.js v10.0.0+
