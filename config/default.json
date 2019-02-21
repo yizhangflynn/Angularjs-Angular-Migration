@@ -1,0 +1,60 @@
+{
+    "root_url": "/api/v1",
+    "port": {
+        "collector": "5050",
+        "api": "4050",
+        "server": "3050"
+    },
+    "database": {
+        "host": "ds231719.mlab.com:31719",
+        "name": "angular-migration-development"
+    },
+    "third_party_apis": {
+        "twitch": {
+            "name": "twitch",
+            "urls": {
+                "site_url": "https://www.twitch.tv/",
+                "search_game_url": "https://api.twitch.tv/helix/games",
+                "search_channel_url": "https://api.twitch.tv/helix/streams"
+            }
+        },
+        "mixer": {
+            "name": "mixer",
+            "urls": {
+                "site_url": "https://mixer.com/",
+                "search_game_url": "https://mixer.com/api/v1/types",
+                "search_channel_url": "https://mixer.com/api/v1/channels"
+            }
+        }
+    },
+    "data_mappings": {
+        "games": {
+            "general": [
+                { "source": "provider_id", "target": "provider_id" }
+            ],
+            "mixer": [
+                { "source": "name", "target": "name" },
+                { "source": "id", "target": "provider_game_id" },
+                { "source": "name", "target": "provider_game_name" },
+                { "source": "coverUrl", "target": "image" },
+                { "source": "viewersCurrent", "target": "view_count" }
+            ]
+        },
+        "channels": {
+            "general": [
+                { "source": "provider_id", "target": "provider_id" }
+            ],
+            "mixer": [
+                { "source": "id", "target": "provider_channel_id" },
+                { "source": "name", "target": "title" },
+                { "source": "user.username", "target": "streamer_name", "delimiter": "." },
+                { "source": "type.id", "target": "provider_game_id", "delimiter": "." },
+                { "source": "type.name", "target": "provider_game_name", "delimiter": "." },
+                { "source": "user.avatarUrl", "target": "image", "delimiter": "." },
+                { "source": "viewersCurrent", "target": "view_count" },
+                { "source": "stream_thumbnail", "target": "thumbnail" },
+                { "source": "thumbnail.url", "target": "banner", "delimiter": "." }
+            ]
+        }
+    }
+}
