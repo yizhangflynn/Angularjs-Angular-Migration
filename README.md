@@ -17,3 +17,31 @@ You will find 5 branches in this repository corresponding to 5 different stages 
 [Stage 0]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-0-application-with-no-tests-and-needs-refactoring
 [Stage 1]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-1-refactored-and-tested-code
 [Stage 2]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-2-hybrid-application-running-both-AngularJs-and-Angular-2+
+
+### The sample application will be deployed to Azure in future. However, if you wish to run and test the sample application on your local environment, please follow the instructions below:
+
+Three things needs to be installed on your local machine:
+* node.js v10.0.0+
+* npm v6.0.0+ (should come with node.js installation)
+* redis local server (if you are on Windows machine, you can download it [here](https://github.com/MicrosoftArchive/redis/releases) and run redis as a local service)
+
+In your command terminal (shell, bash, etc.), install the dependencies using:
+```
+npm install
+```
+Build the sample application with following command:
+```
+npm build
+```
+After you build, you can run tests using command:
+```
+npm run test-frontend
+```
+To serve the application, run:
+```
+npm run dev-frontend
+```
+And access the application in your browser:
+```
+localhost:3050
+```
