@@ -36,7 +36,7 @@ import '@uirouter/angular-hybrid';
 import { TestBed } from '@angular/core/testing';
 import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
 import { stub } from 'sinon';
-
+// initializing Angular 2+ test environment
 TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
 
 let logStub;
@@ -50,7 +50,7 @@ after('global test teardown', () => {
 
     logStub.restore();
 });
-
+// load and serve all test files
 const context = require.context('.', true, /\.(t|j)s/);
 
 context.keys().forEach(context);
