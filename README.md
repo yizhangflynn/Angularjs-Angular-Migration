@@ -33,7 +33,7 @@ Build the sample application with following command:
 ```
 npm build
 ```
-After you build, you can run tests using command:
+After you build, you can run tests using command (note that there are no tests on Stage 0 branch):
 ```
 npm run test-frontend
 ```
