@@ -20,7 +20,7 @@ You will find 5 branches in this repository corresponding to 5 different stages 
 
 ### The application will be deployed to Azure in future. However, if you wish to run and test it on your local machine, please follow the instructions below:
 
-Three things needs to be installed on your local machine:
+Three things need to be installed on your local machine:
 * node.js v10.0.0+
 * npm v6.0.0+ (should come with node.js installation)
 * redis local server (if you are on Windows machine, you can download it [here](https://github.com/MicrosoftArchive/redis/releases) and run redis as a local service)
