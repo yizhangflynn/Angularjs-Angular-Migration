@@ -20,7 +20,7 @@ steps:
   displayName: 'npm run test-frontend'
   inputs:
     command: custom
-    customCommand: 'run test-frontend'
+    customCommand: 'run test'
 
 - task: PublishTestResults@2
   inputs:
