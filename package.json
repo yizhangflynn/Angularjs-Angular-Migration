@@ -150,6 +150,7 @@
         "node-sass": "^4.11.0",
         "nodemon": "^1.18.10",
         "nyc": "^13.3.0",
+        "puppeteer": "^1.12.2",
         "sass-loader": "^7.1.0",
         "sinon": "^7.2.3",
         "source-map-support": "^0.5.10",

@@ -1,3 +1,5 @@
+process.env.CHROME_BIN = require('puppeteer').executablePath();
+
 const webpack = require('./webpack/testing.config');
 const templates = './src/frontend/public/**/*.html';
 const entry = './src/frontend/public/specs.ts';
@@ -22,7 +24,7 @@ module.exports = function (config) {
             stats: { chunks: false }
         },
         autoWatch: true,
-        browsers: ['Chrome'],
+        browsers: ['ChromeHeadless'],
         frameworks: ['mocha', 'chai', 'sinon'],
         reporters: ['mocha', 'coverage-istanbul', 'remap-coverage'],
         coverageReporter: { type: 'in-memory' },
