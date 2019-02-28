@@ -47,7 +47,7 @@ context('channel card component unit test', () => {
             component.playThumbnail(thumbnail);
 
             sinonExpect.calledOnce(thumbnailPlayerStub.play);
-            sinonExpect.calledWith(thumbnailPlayerStub.play, {});
+            sinonExpect.calledWith(thumbnailPlayerStub.play, null);
         });
     });
 
