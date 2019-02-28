@@ -16,7 +16,7 @@ steps:
 
 - script: npm install
 
-- script: npm build
+- script: npm run build
 
 - script: npm run test-frontend
 
