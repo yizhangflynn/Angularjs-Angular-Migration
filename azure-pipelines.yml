@@ -5,7 +5,10 @@
 
 pool:
   vmImage: 'Ubuntu 16.04'
-  
+
+trigger:
+- azure-test
+
 steps:
 - task: NodeTool@0
   inputs:
