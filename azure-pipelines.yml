@@ -6,13 +6,16 @@
 pool:
   vmImage: 'Ubuntu 16.04'
   
-script: npm install
-script: npm run test-frontend
-  
 steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '10.x'
+    
+- script: npm install
+
+- script: npm build
+
+- script: npm run test-frontend
 
 - task: PublishTestResults@2
   inputs:
