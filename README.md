@@ -11,12 +11,13 @@ You will find 5 branches in this repository corresponding to 5 different stages 
 * [Stage 0: application with no tests and needs refactoring][Stage 0]
 * [Stage 1: refactored and tested code][Stage 1]
 * [Stage 2: hybrid application running both AngularJs and Angular 2+][Stage 2]
-* Stage 3: fully migrated application
+* [Stage 3: fully migrated application][Stage 3]
 * Stage 4: adopting TypeScript
 
 [Stage 0]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-0-application-with-no-tests-and-needs-refactoring
 [Stage 1]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-1-refactored-and-tested-code
 [Stage 2]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-2-hybrid-application-running-both-AngularJs-and-Angular-2+
+[Stage 3]: https://github.com/yizhangflynn/Angularjs-Angular-Migration/tree/Stage-3-migration-strategies-and-fully-migrated-application
 
 ### The application will be deployed to Azure in future. However, if you wish to run and test it on your local machine, please follow the instructions below:
 
