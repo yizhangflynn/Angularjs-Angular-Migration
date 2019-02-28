@@ -1,5 +1,3 @@
-[![Build Status](https://flynndev.visualstudio.com/Yi%20Test%20Project/_apis/build/status/yizhangflynn.Angularjs-Angular-Migration?branchName=master)](https://flynndev.visualstudio.com/Yi%20Test%20Project/_build/latest?definitionId=62&branchName=master)
-
 # Migrating AngularJs to Angular 2+
 
 This is a sample application to demonstrate how we can migrate our AngularJs application to Angular 2+. There are multiple steps involved to help with the migration process over a period of time (i.e. 3 ~ 6 months).
