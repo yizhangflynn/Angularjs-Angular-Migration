@@ -120,7 +120,7 @@ context('channel service unit test', () => {
         it('should keep outdated channels when they are more than total number of new channels', () => {
 
             const expected = outdated.slice();
-            const updated = outdated.slice(0);
+            const updated = outdated.slice(0, 1);
 
             service.refreshChannels(outdated, updated);
 
@@ -142,7 +142,7 @@ context('channel service unit test', () => {
 
             const cache = [];
             const expected = [{ id: 1 }, { id: 4 }, { id: 7 }];
-            channelHttpStub.getChannels.returns($q.resolve(expected));
+            channelHttpStub.getChannels.returns($q.resolve(expected.slice(1)));
 
             service.loadFeaturedChannels(cache);
             $rootScope.$apply();
