@@ -18,7 +18,7 @@ steps:
 - script: npm install
   displayName: Install Dependencies
 
-- script: npm run build
+- script: npm run build-production
   displayName: Build Application
 
 - script: npm run test-frontend && node ./process-coverage-report.js
@@ -43,11 +43,6 @@ steps:
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
-
-- task: PublishBuildArtifacts@1
-  displayName: Publish Build Artifacts
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
 
 - task: CopyFiles@2
   displayName: Create Staging Directory
