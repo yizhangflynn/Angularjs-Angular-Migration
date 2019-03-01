@@ -26,7 +26,7 @@ module.exports = function (config) {
         singleRun: true,
         browsers: ['ChromeHeadless'],
         frameworks: ['mocha', 'chai', 'sinon'],
-        reporters: ['mocha', 'coverage-istanbul', 'remap-coverage'],
+        reporters: ['mocha', 'coverage-istanbul', 'remap-coverage', 'junit'],
         coverageReporter: { type: 'in-memory' },
         mochaReporter: {
             colors: {
@@ -51,11 +51,18 @@ module.exports = function (config) {
             json: './coverage/coverage.json',
             html: './coverage/html'
         },
+        junitReporter: {
+            outputDir: './coverage',
+            outputFile: undefined,
+            suite: '',
+            useBrowserName: true
+        },
         plugins: [
             'karma-webpack',
             'karma-chrome-launcher',
             'karma-mocha',
             'karma-mocha-reporter',
+            'karma-junit-reporter',
             'karma-chai',
             'karma-sinon',
             'karma-coverage',
