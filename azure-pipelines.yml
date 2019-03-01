@@ -15,26 +15,33 @@ steps:
     versionSpec: '10.x'
 
 - script: npm install
+  displayName: Install Dependencies
 
 - script: npm run build
+  displayName: Build Application
 
 - script: npm run test-frontend && node ./process-coverage-report.js
+  displayName: Run Unit Tests
 
 - task: PublishTestResults@2
+  displayName: Publish Test Report
   inputs:
     testResultsFiles: '$(System.DefaultWorkingDirectory)/test-report/**/result.xml'
     testRunTitle: 'Sample app test results'
   condition: succeededOrFailed()
 
 - task: PublishCodeCoverageResults@1
+  displayName: Publish Code Coverage Report
   inputs:
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 
 - task: ArchiveFiles@2
+  displayName: Archive Files
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
     includeRootFolder: false
 
 - task: PublishBuildArtifacts@1
+  displayName: Publish Build Artifacts
