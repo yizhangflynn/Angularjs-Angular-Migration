@@ -38,12 +38,6 @@ steps:
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/coverage/*coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/coverage'
 
-- task: ArchiveFiles@2
-  displayName: Archive Files
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
-    includeRootFolder: false
-
 - task: CopyFiles@2
   displayName: Create Staging Directory
   inputs:
@@ -59,3 +53,9 @@ steps:
   displayName: Publish Build Artifacts
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+
+- task: ArchiveFiles@2
+  displayName: Archive Files
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
+    includeRootFolder: false
