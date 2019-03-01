@@ -49,13 +49,13 @@ steps:
       LICENSE
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
 
-- task: PublishBuildArtifacts@1
-  displayName: Publish Build Artifacts
-  inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
 - task: ArchiveFiles@2
   displayName: Archive Files
   inputs:
     rootFolderOrFile: '$(Build.ArtifactStagingDirectory)'
     includeRootFolder: false
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Build Artifacts
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
