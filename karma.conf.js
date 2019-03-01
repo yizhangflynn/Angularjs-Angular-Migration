@@ -43,7 +43,7 @@ module.exports = function (config) {
             }
         },
         coverageIstanbulReporter: {
-            reports: ['text', 'text-summary', 'cobertura'],
+            reports: ['text', 'text-summary', 'html', 'cobertura'],
             fixWebpackSourcePaths: true
         },
         remapCoverageReporter: {
