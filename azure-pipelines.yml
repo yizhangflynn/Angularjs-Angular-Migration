@@ -11,6 +11,7 @@ trigger:
 
 steps:
 - task: NodeTool@0
+  displayName: Setup Node.js
   inputs:
     versionSpec: '10.x'
 
@@ -45,3 +46,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: Publish Build Artifacts
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)'
