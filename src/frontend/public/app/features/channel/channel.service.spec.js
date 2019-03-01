@@ -120,7 +120,7 @@ context('channel service unit test', () => {
         it('should keep outdated channels when they are more than total number of new channels', () => {
 
             const expected = outdated.slice();
-            const updated = outdated.slice(0, 1);
+            const updated = outdated.slice(0);
 
             service.refreshChannels(outdated, updated);
 
