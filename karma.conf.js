@@ -26,7 +26,7 @@ module.exports = function (config) {
         singleRun: true,
         browsers: ['ChromeHeadless'],
         frameworks: ['mocha', 'chai', 'sinon'],
-        reporters: ['mocha', 'coverage-istanbul', 'remap-coverage', 'junit'],
+        reporters: ['mocha', 'junit', 'coverage-istanbul', 'remap-coverage'],
         coverageReporter: { type: 'in-memory' },
         mochaReporter: {
             colors: {
@@ -43,7 +43,7 @@ module.exports = function (config) {
             }
         },
         coverageIstanbulReporter: {
-            reports: ['text', 'text-summary'],
+            reports: ['text', 'text-summary', 'cobertura'],
             fixWebpackSourcePaths: true
         },
         remapCoverageReporter: {
@@ -52,8 +52,8 @@ module.exports = function (config) {
             html: './coverage/html'
         },
         junitReporter: {
-            outputDir: './coverage',
-            outputFile: undefined,
+            outputDir: './test-report',
+            outputFile: 'result.xml',
             suite: '',
             useBrowserName: true
         },
