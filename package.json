@@ -162,6 +162,7 @@
         "tslint-microsoft-contrib": "^6.0.0",
         "typescript": "^3.3.3",
         "url-loader": "^1.1.2",
+        "vsts-coverage-styles": "^1.0.7",
         "webpack": "^4.29.3",
         "webpack-cli": "^3.2.3",
         "webpack-dev-server": "^3.1.14",
