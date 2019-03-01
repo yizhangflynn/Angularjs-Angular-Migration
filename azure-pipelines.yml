@@ -48,3 +48,17 @@ steps:
   displayName: Publish Build Artifacts
   inputs:
     PathtoPublish: '$(System.DefaultWorkingDirectory)'
+
+- task: CopyFiles@2
+  displayName: Create Staging Directory
+  inputs:
+    SourceFolder: '$(System.DefaultWorkingDirectory)'
+    Contents: |
+      dist/**/*.*
+      package.json
+      package-lock.json
+      LICENSE
+    TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+- task: PublishBuildArtifacts@1
+  displayName: Publish Build Artifacts
