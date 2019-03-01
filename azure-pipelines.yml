@@ -22,7 +22,7 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFiles: './coverage/TESTS-HeadlessChrome*.xml'
+    testResultsFiles: '$(System.DefaultWorkingDirectory)/coverage/TESTS*.xml'
     testRunTitle: 'Sample app test results'
   condition: succeededOrFailed()
 
