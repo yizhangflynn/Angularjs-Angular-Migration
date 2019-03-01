@@ -142,7 +142,7 @@ context('channel service unit test', () => {
 
             const cache = [];
             const expected = [{ id: 1 }, { id: 4 }, { id: 7 }];
-            channelHttpStub.getChannels.returns($q.resolve(expected.slice(1)));
+            channelHttpStub.getChannels.returns($q.resolve(expected));
 
             service.loadFeaturedChannels(cache);
             $rootScope.$apply();
