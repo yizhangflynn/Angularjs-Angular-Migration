@@ -23,7 +23,8 @@ module.exports = function (config) {
             noInfo: true,
             stats: { chunks: false }
         },
-        singleRun: true,
+        singleRun: process.env.IS_CI_BUILD,
+        autoWatch: !process.env.IS_CI_BUILD,
         browsers: ['ChromeHeadless'],
         frameworks: ['mocha', 'chai', 'sinon'],
         reporters: ['mocha', 'junit', 'coverage-istanbul', 'remap-coverage'],
