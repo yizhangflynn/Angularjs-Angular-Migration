@@ -19,6 +19,7 @@ steps:
   displayName: Install Dependencies
 
 - bash: set IS_CI_BUILD=true
+  displayName: Set Node Environment Variables
 
 - script: npm run build-production
   displayName: Build Application
