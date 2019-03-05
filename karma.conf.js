@@ -1,5 +1,4 @@
 process.env.CHROME_BIN = require('puppeteer').executablePath();
-process.env.IS_CI_BUILD = true;
 
 const webpack = require('./webpack/testing.config');
 const templates = './src/frontend/public/**/*.html';

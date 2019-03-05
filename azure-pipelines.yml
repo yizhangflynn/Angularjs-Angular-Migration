@@ -3,6 +3,9 @@
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
+variables:
+    IS_CI_BUILD: true
+
 pool:
   vmImage: 'Ubuntu 16.04'
 
@@ -17,9 +20,6 @@ steps:
 
 - script: npm install
   displayName: Install Dependencies
-
-- bash: set IS_CI_BUILD=true
-  displayName: Set Node Environment Variables
 
 - script: npm run build-production
   displayName: Build Application
