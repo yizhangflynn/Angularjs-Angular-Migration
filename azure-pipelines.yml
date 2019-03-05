@@ -18,8 +18,9 @@ steps:
 - script: npm install
   displayName: Install Dependencies
 
-- script: set IS_CI_BUILD=true&& npm run build-production
+- script: npm run build-production
   displayName: Build Application
+  env: IS_CI_BUILD=true
 
 - script: npm run test-frontend && node ./process-coverage-report.js
   displayName: Run Unit Tests
