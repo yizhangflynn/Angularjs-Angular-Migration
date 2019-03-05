@@ -20,7 +20,8 @@ steps:
 
 - script: npm run build-production
   displayName: Build Application
-  env: IS_CI_BUILD=true
+  env:
+    IS_CI_BUILD: true
 
 - script: npm run test-frontend && node ./process-coverage-report.js
   displayName: Run Unit Tests
