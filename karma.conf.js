@@ -1,5 +1,6 @@
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
+const isCiBuild = process.env.IS_CI_BUILD === 'true';
 const webpack = require('./webpack/testing.config');
 const templates = './src/frontend/public/**/*.html';
 const entry = './src/frontend/public/specs.ts';
@@ -23,8 +24,8 @@ module.exports = function (config) {
             noInfo: true,
             stats: { chunks: false }
         },
-        singleRun: process.env.IS_CI_BUILD,
-        autoWatch: !process.env.IS_CI_BUILD,
+        singleRun: isCiBuild,
+        autoWatch: !isCiBuild,
         browsers: ['ChromeHeadless'],
         frameworks: ['mocha', 'chai', 'sinon'],
         reporters: ['mocha', 'junit', 'coverage-istanbul', 'remap-coverage'],
