@@ -52,7 +52,7 @@ context('app component unit test', () => {
         $rootScope.$apply();
 
         expect(component).is.not.null;
-        expect(componentElement.html()).is.empty;
+        expect(componentElement.html()).is.not.empty;
     });
 
     describe('$onInit()', () => {
