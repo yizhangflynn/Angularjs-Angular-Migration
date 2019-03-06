@@ -17,7 +17,7 @@ context('short view count pipe unit test', () => {
 
             const expected = 999;
 
-            expect(pipe.transform(+expected)).to.equal(expected + 1);
+            expect(pipe.transform(+expected)).to.equal(expected);
         });
 
         it('should append letter k and add comma separator when applicable', () => {
