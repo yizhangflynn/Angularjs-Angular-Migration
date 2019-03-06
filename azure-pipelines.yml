@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 variables:
-    IS_CI_BUILD: true # equivalent to set IS_CI_BUILD=true in bash
+    IS_CI_BUILD: true
 
 pool:
   vmImage: 'Ubuntu 16.04'
@@ -16,7 +16,7 @@ steps:
 - task: NodeTool@0
   displayName: Setup Node.js
   inputs:
-    versionSpec: '10.x' # specify Node version we wish to use
+    versionSpec: '10.x'
 
 - script: npm install
   displayName: Install Dependencies
