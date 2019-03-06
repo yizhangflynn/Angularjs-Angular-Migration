@@ -1,5 +1,5 @@
 process.env.CHROME_BIN = require('puppeteer').executablePath();
-
+// read environment variable
 const isCiBuild = process.env.IS_CI_BUILD === 'true';
 const webpack = require('./webpack/testing.config');
 const templates = './src/frontend/public/**/*.html';
@@ -24,6 +24,7 @@ module.exports = function (config) {
             noInfo: true,
             stats: { chunks: false }
         },
+        // set single run and auto watch
         singleRun: isCiBuild,
         autoWatch: !isCiBuild,
         browsers: ['ChromeHeadless'],
