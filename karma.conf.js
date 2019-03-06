@@ -1,6 +1,3 @@
-console.log(process.env.IS_CI_BUILD);
-console.log(typeof process.env.IS_CI_BUILD);
-
 process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 const webpack = require('./webpack/testing.config');
