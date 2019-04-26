@@ -1,0 +1,19 @@
+<div class="game-channel-list-container non-selectable" *ngIf="game">
+    <div class="game-cover">
+        <game-card *ngIf="game" [game]="game"></game-card>
+
+        <div class="game-details">
+            <span class="game-title">{{ game.name | capitalize | uppercaseRomanNumerals }}</span><br><br>
+            <div class="game-view-counts">{{ game.view_count | shortViewCount }} {{ 'watching' }}</div>
+        </div>
+    </div>
+
+    <channel-card
+        *ngFor="let channel of channels"
+        (click)="addHistory(channel)"
+        (onFollow)="follow(channel)"
+        (onUnfollow)="unfollow(channel)"
+        [isFollowed]="isFollowed(channel)"
+        [channel]="channel">
+    </channel-card>
+</div>

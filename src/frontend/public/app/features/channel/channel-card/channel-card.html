@@ -1,0 +1,31 @@
+<div class="channel-card-container non-selectable">
+
+    <span class="view-counts">{{ channel.view_count | shortViewCount }}</span>
+
+    <video class="stream-thumbnail"
+        (mouseover)="playThumbnail($event)"
+        (mouseleave)="stopThumbnail($event)"
+        [src]="channel.thumbnail"
+        type="video/mp4"
+        loop>
+    </video>
+
+    <div class="channel-image"
+        [ngStyle]="{ 'background-image': 'url(' + channel.image + ')' }">
+    </div>
+
+    <div class="channel-details">
+        <span>{{ channel.title }}</span><br><br>
+        <span>{{ channel.streamer_name }}</span>
+
+        <div class="channel-follow-button channel-unfollowed"
+            (click)="onFollow.emit()"
+            *ngIf="!isFollowed">follow
+        </div>
+
+        <div class="channel-follow-button channel-followed"
+            (click)="onUnfollow.emit()"
+            *ngIf="isFollowed">unfollow
+        </div>
+    </div>
+</div>

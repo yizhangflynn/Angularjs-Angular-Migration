@@ -1,0 +1,25 @@
+<div class="view-history-card-container">
+    <div class="channel-thumbnail"
+        *ngIf="isStaticThumbnail"
+        [ngStyle]="{ 'background-image': 'url(' + viewHistory.thumbnail + ')' }">
+    </div>
+    <video class="channel-thumbnail"
+        *ngIf="!isStaticThumbnail"
+        [src]="viewHistory.thumbnail"
+        type="video/mp4">
+    </video>
+
+    <div class="avatar"
+        [ngStyle]="{ 'background-image': 'url(' + viewHistory.image + ')' }">
+    </div>
+
+    <div class="view-history-details">
+        <span class="title">{{ viewHistory.title }}</span><br><br>
+        <span class="streamer">{{ viewHistory.streamer_name }}</span> was playing:
+        <span class="game-name"
+            (click)="onChannelNavigation.emit()">{{ viewHistory.game_name | capitalize }}
+        </span>
+    </div>
+
+    <div class="remove-button" (click)="onDelete.emit()"></div>
+</div>

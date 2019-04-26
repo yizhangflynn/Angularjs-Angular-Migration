@@ -1,0 +1,6 @@
+dist/
+node_modules/
+test-report/
+coverage/
+.nyc_output/
+note.txt

@@ -1,0 +1,10 @@
+<div class="channel-badge-container">
+    <div class="avatar"
+        [ngStyle]="{ 'background-image': 'url(' + badge.image + ')' }">
+    </div>
+
+    <div class="badge-details">
+        <span>{{ badge.streamer_name }}</span><br>
+        <span>{{ badge.game_name || badge.provider_game_name }}</span>
+    </div>
+</div>

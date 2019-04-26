@@ -1,0 +1,7 @@
+<div class="game-list-container non-selectable">
+    <game-card
+        *ngFor="let game of games"
+        (click)="toChannelsView(game)"
+        [game]="game">
+    </game-card>
+</div>

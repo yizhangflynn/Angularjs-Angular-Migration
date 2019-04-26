@@ -1,0 +1,10 @@
+<div class="featured-channel-list-container non-selectable">
+    <channel-card
+        *ngFor="let channel of channels"
+        (click)="addHistory(channel)"
+        (onFollow)="follow(channel)"
+        (onUnfollow)="unfollow(channel)"
+        [isFollowed]="isFollowed(channel)"
+        [channel]="channel">
+    </channel-card>
+</div>

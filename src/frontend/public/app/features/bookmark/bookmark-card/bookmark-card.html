@@ -1,0 +1,13 @@
+<div class="bookmark-card-container"
+    [ngStyle]="{ 'background-image': 'url(' + bookmark.banner + ')' }">
+
+    <div class="bookmark-image"
+        [ngStyle]="{ 'background-image': 'url(' + bookmark.image + ')' }">
+    </div>
+
+    <span class="bookmark-name">{{ bookmark.streamer_name }}</span>
+
+    <div class="bookmark-unfollow-button"
+        (click)="onUnfollow.emit()">unfollow
+    </div>
+</div>

@@ -1,0 +1,10 @@
+<div class="game-card-container">
+    <div class="game-image"
+        [ngStyle]="{ 'background-image': 'url(' + game.image + ')' }">
+    </div>
+
+    <div class="game-details">
+        <span>{{ game.name | capitalize | uppercaseRomanNumerals }}</span>
+        <span class="view-counts">{{ game.view_count | shortViewCount }}</span>
+    </div>
+</div>

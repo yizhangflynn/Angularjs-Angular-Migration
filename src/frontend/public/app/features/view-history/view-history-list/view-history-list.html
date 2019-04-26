@@ -1,0 +1,18 @@
+<div class="view-history-list-container non-selectable">
+    <div class="clear-view-history-button"
+        *ngIf="histories.length"
+        (click)="confirmClearHistories()">Clear History
+    </div>
+
+    <span class="empty-view-history-message"
+        *ngIf="!histories.length">This place is so quiet...
+    </span>
+
+    <view-history-card
+        *ngFor="let history of histories"
+        (onDelete)="deleteHistory(history)"
+        (onChannelNavigation)="toChannelsView(history.game_id)"
+        [isStaticThumbnail]="isStaticImage(history.thumbnail)"
+        [viewHistory]="history">
+    </view-history-card>
+</div>

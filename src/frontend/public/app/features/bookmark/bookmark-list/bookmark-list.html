@@ -1,0 +1,7 @@
+<div class="bookmark-list-container non-selectable">
+    <bookmark-card
+        *ngFor="let bookmark of bookmarks"
+        (onUnfollow)="unfollow(bookmark)"
+        [bookmark]="bookmark">
+    </bookmark-card>
+</div>
